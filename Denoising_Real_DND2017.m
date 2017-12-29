@@ -33,7 +33,7 @@ for i = 1 :im_num
             Par              =    Parameters_setting( nSig );
             Par.I = nim(:,:,c);
             Par.nim = nim(:,:,c);
-            [IMoutcc, ~, ~]   =    NCSR_Denoising( Par );
+            [IMoutc, ~, ~]   =    NCSR_Denoising( Par );
             IMout(:,:,c) = IMoutc;
         end
         t2=clock;
@@ -41,6 +41,6 @@ for i = 1 :im_num
         alltime(i)  = etime(t2, t1);
         %% output
         IMoutname = sprintf([write_sRGB_dir '/' method '_DND_' IMinname '.png']);
-        imwrite(IMout, IMoutname);
+        imwrite(IMout/255, IMoutname);
     end
 end
